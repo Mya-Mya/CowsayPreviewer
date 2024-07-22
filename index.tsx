@@ -19,6 +19,7 @@ const App = () => {
         <Stack gap={1} direction="row" sx={{ flexGrow: 1 }} p="1rem">
             <Card>
                 <Textarea minRows={1} value={text} onChange={e => setText(e.target.value)} placeholder="Text" />
+                <Input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search Cow Name" />
                 <CowNameList currentCowName={currentCowName} setCurrentCowName={setCurrentCowName} searchQuery={searchQuery} />
             </Card>
             <Card sx={{ flexGrow: 1, overflow: "scroll", display: "flex", flexDirection: "column" }}>
