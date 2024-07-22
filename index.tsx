@@ -15,10 +15,6 @@ const App = () => {
         cow: COWNAME_TO_COW[currentCowName]
     })
 
-    const onCopyPress = async() => {
-        await navigator.clipboard.writeText(output);
-    }
-
     return <Box sx={{ display: "flex" }} maxHeight="100dvh">
         <Stack gap={1} direction="row" sx={{ flexGrow: 1 }} p="1rem">
             <Card>
@@ -29,9 +25,6 @@ const App = () => {
             </Card>
             <Card sx={{ flexGrow: 1, overflow: "scroll", display: "flex", flexDirection: "column" }}>
                 <Textarea value={output} sx={{ fontFamily: "Courier", flexGrow: 1 }} variant="plain" id="output" />
-                <Stack direction={"row-reverse"}>
-                    <Button variant="soft" onClick={() => onCopyPress()}>Copy</Button>
-                </Stack>
             </Card>
         </Stack>
     </Box>
