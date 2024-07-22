@@ -3,14 +3,16 @@ import { createRoot } from "react-dom/client";
 import { Box, Button, Card, Container, Input, List, ListItem, ListItemButton, Stack, Textarea, TextField, Typography } from "@mui/joy";
 import { say } from "cowsay";
 import { COWNAMES, COWNAME_TO_COW } from "./cowsayutil"
+import { CowNameList } from "./components";
 
 const App = () => {
     const [text, setText] = useState("")
-    const [cowName, setCowName] = useState("Default")
+    const [searchQuery, setSearchQuery] = useState("")
+    const [currentCowName, setCurrentCowName] = useState("Default")
 
     const output = say({
         text,
-        cow: COWNAME_TO_COW[cowName]
+        cow: COWNAME_TO_COW[currentCowName]
     })
 
     const onCopyPress = async() => {
@@ -23,15 +25,7 @@ const App = () => {
                 <FormLabel>Text</FormLabel>
                 <Textarea minRows={1} value={text} onChange={e => setText(e.target.value)} />
                 <FormLabel>Cow Name</FormLabel>
-                <List sx={{ overflow: "scroll" }} size="sm">
-                    {COWNAMES.map(name =>
-                        <ListItem>
-                            <ListItemButton key={name} selected={name === cowName} onClick={() => setCowName(name)}>
-                                {name}
-                            </ListItemButton>
-                        </ListItem>
-                    )}
-                </List>
+                <CowNameList currentCowName={currentCowName} setCurrentCowName={setCurrentCowName} searchQuery={searchQuery} />
             </Card>
             <Card sx={{ flexGrow: 1, overflow: "scroll", display: "flex", flexDirection: "column" }}>
                 <Textarea value={output} sx={{ fontFamily: "Courier", flexGrow: 1 }} variant="plain" id="output" />
