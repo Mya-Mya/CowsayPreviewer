@@ -14,6 +14,7 @@ const App = () => {
         text,
         cow: COWNAME_TO_COW[currentCowName]
     })
+    const outputLines = output.split("\n")
 
     return <Box sx={{ display: "flex", height: "100dvh" }}>
         <Stack gap={1} direction="row" sx={{ flexGrow: 1 }} p="1rem">
@@ -22,8 +23,17 @@ const App = () => {
                 <Input type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search Cow Name" />
                 <CowNameList currentCowName={currentCowName} setCurrentCowName={setCurrentCowName} searchQuery={searchQuery} />
             </Card>
-            <Card sx={{ flexGrow: 1, overflow: "scroll", display: "flex", flexDirection: "column" }}>
-                <Textarea value={output} sx={{ fontFamily: "Courier", flexGrow: 1 }} variant="plain" id="output" />
+
+            <Card sx={{ flexGrow: 1}}>
+                <Container sx={{overflowY:"scroll"}}>
+                    {outputLines.map((line, i) =>
+                        <Typography
+                            key={i}
+                            sx={{ fontFamily: "Courier", whiteSpace: "break-spaces", textWrap: "nowrap" }}>
+                            {line}
+                        </Typography>
+                    )}
+                </Container>
             </Card>
         </Stack>
     </Box>
