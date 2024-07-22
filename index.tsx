@@ -15,7 +15,7 @@ const App = () => {
         cow: COWNAME_TO_COW[currentCowName]
     })
 
-    return <Box sx={{ display: "flex" }} maxHeight="100dvh">
+    return <Box sx={{ display: "flex", height: "100dvh" }}>
         <Stack gap={1} direction="row" sx={{ flexGrow: 1 }} p="1rem">
             <Card>
                 <FormLabel>Text</FormLabel>
