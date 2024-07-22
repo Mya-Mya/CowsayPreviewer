@@ -18,9 +18,7 @@ const App = () => {
     return <Box sx={{ display: "flex", height: "100dvh" }}>
         <Stack gap={1} direction="row" sx={{ flexGrow: 1 }} p="1rem">
             <Card>
-                <FormLabel>Text</FormLabel>
-                <Textarea minRows={1} value={text} onChange={e => setText(e.target.value)} />
-                <FormLabel>Cow Name</FormLabel>
+                <Textarea minRows={1} value={text} onChange={e => setText(e.target.value)} placeholder="Text" />
                 <CowNameList currentCowName={currentCowName} setCurrentCowName={setCurrentCowName} searchQuery={searchQuery} />
             </Card>
             <Card sx={{ flexGrow: 1, overflow: "scroll", display: "flex", flexDirection: "column" }}>
